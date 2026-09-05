@@ -27,7 +27,8 @@ class PredictResponse(BaseModel):
 class HealthResponse(BaseModel):
     status: str
     application: str
-    version: str
+    application_version: str
+    model_version: str
 
 
 @app.get("/health", response_model=HealthResponse)
@@ -36,7 +37,8 @@ def health():
     return {
         "status": "healthy",
         "application": "student-ml-api",
-        "version": get_version(),
+        "application_version": get_version(),
+        "model_version": "1.0",
     }
 
 
